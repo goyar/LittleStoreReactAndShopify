@@ -1,26 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ProductList from './ProductCard/ProductList';
+import OrderDetails from './OrderDetails/OrderDetails';
+import NotFound from './NotFound';
+import { Switch, Route } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+
+  render() {
+    return (
+      <Switch>
+        <Route exact path='/' render ={function(){return <ProductList apiUrl={process.env.REACT_APP_API_URL}/>}}></Route>
+        {<Route exact path='/order' render ={function(props){return <OrderDetails {...props}/>}}></Route>}
+        <Route render ={function(){return <NotFound/>}}></Route>
+      </Switch>
+    );
+  }
 }
 
 export default App;

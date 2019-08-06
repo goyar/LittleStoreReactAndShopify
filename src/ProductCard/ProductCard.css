@@ -1,0 +1,12 @@
+.card {
+    width: 16rem;
+    margin-bottom: 2rem;
+}
+
+.card-text {
+    word-wrap: break-word;
+}
+del {
+    color: red;
+    font-weight: bolder;
+}
